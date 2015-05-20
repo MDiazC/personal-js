@@ -1,0 +1,2 @@
+var json = $.getJSON("users.json");
+var data = eval("(" +json.responseText + ")");

@@ -1,0 +1,41 @@
+<head>
+<link rel="stylesheet" type="text/css" href="../css/general_style.css" media="screen" />
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="../js/handlebars-v3.0.3.js"></script>
+<script src="../js/twitter.js"></script>
+<header></header>
+    <div id="upper_bar">
+        <div id="logo">
+            <img src="../images/logo.png" />
+        </div>
+        <div id="search">
+            <input id="searcher" /> 
+            <span id="searcher_button">Go</span> 
+        </div>
+
+        <div id="buttons">
+            <span id="home">Home</span>
+            <span id="update_post" onclick="$('#update').show()">Update</span>
+            <img src="../images/profile/daniel-craig.jpg" />
+        </div>  
+    <div class="clear"></div>
+    </div>
+    <div id="logged_user"></div>
+    <div id="timeline"></div>
+    <h1> Hola q ase </h1>
+
+<div id="update" onclick="$(this).hide()">
+    <input id="new_post" />
+</div>
+<script>
+
+$( document ).ready(function() {
+    loadUserInfo();
+    loadPosts();
+});
+</script>
+</body>
+
+
