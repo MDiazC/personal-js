@@ -1,4 +1,4 @@
-jsonCallback({
+jsonCallbackUser({
     "1":{
 	    "id": 1,
 	    "username": "James Bond",

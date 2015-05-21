@@ -1,4 +1,4 @@
-jsonCallback({
+jsonCallbackPost({
 	"1":{
 		"id": 1,
 		"userId": 1,
