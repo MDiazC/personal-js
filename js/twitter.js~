@@ -1,2 +1,98 @@
-var json = $.getJSON("users.json");
-var data = eval("(" +json.responseText + ")");
+var userJSONPath = "https://raw.githubusercontent.com/MDiazC/socialnetwork-js-project/master/js/users.json";
+var postsJSONPath = "https://raw.githubusercontent.com/MDiazC/socialnetwork-js-project/blob/master/js/posts.json";
+var loggedUserId = 5;
+var usersData;
+var postsData;
+
+
+function showUpdate(){
+    $('udpate').show();
+}
+
+function loadUserInfo(){
+var source   = $("#user-template").html();
+var template = Handlebars.compile(source);
+var context = {user_image: '../'+usersData[loggedUserId].pic, user_name: usersData[loggedUserId].username, user_text: usersData[loggedUserId].about};
+var html    = template(context);
+$('#logged_user').append(html);
+}
+function loadPosts(){
+
+
+user_image
+user_text
+user_name
+user_post
+
+reply
+
+user_image
+user_text
+user_name
+user_post
+
+
+
+var source   = $("#posts-template").html();
+var template = Handlebars.compile(source);
+
+var context={};
+var userId=0;
+
+for(var i =0;i<postsData.length;i++){
+    userId=postsData[i].userId
+    context.user_image='../'+usersData[userId].pic;
+    context.user_text=usersData[userId].about;
+    context.user_name=usersData[userId].username;
+    context.user_post=postsData[i].content;
+}
+var context = {title: "My New Post", body: "This is my first post!"};
+var html    = template(context);
+$('#timeline').append(html);
+}
+
+function loadData(){
+
+
+var url= userJSONPath+"?callback=?";
+
+$.ajax({
+   type: 'GET',
+    url: url,
+    async: false,
+    jsonpCallback: 'jsonCallback',
+    contentType: "application/json",
+    dataType: 'jsonp',
+    success: function(json) {
+usersData=json;
+       loadUserInfo();
+    },
+    error: function(e) {
+       console.log(e.message);
+    }
+});
+
+url= userJSONPath+"?callback=?";
+
+$.ajax({
+   type: 'GET',
+    url: url,
+    async: false,
+    jsonpCallback: 'jsonCallback',
+    contentType: "application/json",
+    dataType: 'jsonp',
+    success: function(json) {
+postsData=json;
+loadPosts();
+    },
+    error: function(e) {
+       console.log(e.message);
+    }
+});
+}
+
+
+
+
+
+
