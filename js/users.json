@@ -1,4 +1,4 @@
-Ext.data.JsonP.localJsonpCallback({
+jsonCallback({
     "1":{
 	    "id": 1,
 	    "username": "James Bond",
