@@ -1,4 +1,4 @@
-
+func_callback({
     "1":{
 	    "id": 1,
 	    "username": "James Bond",
@@ -31,4 +31,4 @@
 	    "pic": "images/profile/daniel-craig.jpg",
 	    "about": "James Bond reloaded"
     }
-
+})
