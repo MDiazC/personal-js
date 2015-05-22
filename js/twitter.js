@@ -6,10 +6,57 @@ var postsData;
 
 
 function showUpdate(){
-    $('udpate').show();
+    $('#udpate').show();
+}
+
+function showErrorMessage(){
+    showUpdate();
+    $('#error').show();
+
+}
+
+function addComment(evt){
+
+    if(evt.charCode === 13 || evt.keyCode === 13){
+
+            var jElem = $(evt.target);
+            var post = {};
+            var postId=jElem.attr('data-box-post-id')
+            post.postId= postId;
+            post.content= jElem.val();
+            post.data="";
+            post.userId=loggedUserId;
+
+            var id=0;
+            for(var pos in postsData[postId].comments){
+                id=postsData[postId].comments[pos].id;
+            }
+            if(id == 0)
+                id=10;
+            else
+                id++;
+
+            post.id=id;
+            postsData[postId].comments.push(post);
+            $('#timeline').empty();
+            
+            loadPosts();
+console.log("true "+ postId);
+
+    }
+else{
+console.log("false");
+}
+
 }
 
 function loadUserInfo(){
+
+    if(typeof usersData == 'undefined'){
+        showErrorMessage();
+        return;
+    }
+
     var source   = $("#user-template").html();
     var template = Handlebars.compile(source);
     var context = {
@@ -21,6 +68,11 @@ function loadUserInfo(){
     $('#logged_user').append(html);
 }
 function loadPosts(){
+
+    if(typeof usersData == 'undefined' || typeof postsData == 'undefined'){
+        showErrorMessage();
+        return;
+    }
 
     var source   = $("#posts-template").html();
     var template = Handlebars.compile(source);
@@ -43,6 +95,7 @@ function loadPosts(){
 
         if(postsData[pos].comments.length > 0){
             subpost=[];
+            post.reply=false;
             for(var subpos in postsData[pos].comments){
                 subpost_info={}
                 userId=postsData[pos].comments[subpos].userId;
@@ -76,7 +129,7 @@ function loadData(){
            loadUserInfo();
         },
         error: function(e) {
-            alert("Unexpected error when loading info, please reload");
+            showErrorMessage();
            console.log(e.message);
         }
     });
@@ -94,7 +147,7 @@ function loadData(){
             loadPosts();
         },
         error: function(e) {
-            alert("Unexpected error while loading, please reload");
+            showErrorMessage();
            console.log(e.message);
         }
     });

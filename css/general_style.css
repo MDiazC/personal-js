@@ -86,7 +86,7 @@ body{
 /* Styles timeline */
  #timeline{
     width:600px;
-    background-color:E1E1E1;
+    background-color:EEEEEE;
 
     display:inline-block;
     margin-top:30px;
@@ -94,6 +94,47 @@ body{
     padding:20px 10px 20px 10px;
     
 }
+
+#timeline span{
+    display:block;
+}
+
+#timeline .user_image{
+    display:inline-block;
+}
+
+#timeline .user_info{
+    display: inline-block;
+    width: 90%;
+    margin-bottom: 8px;
+    vertical-align: top;
+}
+
+#timeline .user_info .user_name{
+    font-weight: bold
+}
+
+#timeline .reply{
+    padding-left:10px;
+    margin-left:30px;
+    background-color:E1E1E1;
+    border-radius:6px;
+    padding-top:4px;
+    margin-bottom: 3px;
+}
+
+#timeline .add_post{
+    display:block;
+    margin-bottom:20px;
+    width:100%;
+}
+
+#timeline .right{
+    margin-left:30px;
+    width:95% !important;
+}
+
+
 /* Styles update */
 #update{
     position:absolute;
