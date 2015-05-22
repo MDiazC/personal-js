@@ -24,7 +24,6 @@
     </div>
     <div id="logged_user"></div>
     <div id="timeline"></div>
-    <h1> Hola q ase </h1>
 
 <div id="update" onclick="$(this).hide()">
     <input id="new_post" />
@@ -36,17 +35,19 @@ $( document ).ready(function() {
 });
 </script>
 <script id="posts-template" type="text/x-handlebars-template">
-    <img src={{user_image}} alt="{{user_text}}"/>
-    <span class="user_name">{{user_name}}</span>
-    <span class="user_post">{{user_post}}</span>
-    {{#each reply}}
-    <div class="reply">
-        <img src={{user_image}} alt="{{user_text}}"/>
-        <span class="reply_user_name">{{user_name}}</span>
-        <span class="reply_user_post">{{user_post}}</span>
-    </div>
-    {{/each}}
-    <input placeholder="Post to comment" onclick="addComment()/>
+    {{#each posts}}
+        <img src={{user_image}} alt="{{user_text}}" class="user_image"/>
+        <span class="user_name">{{user_name}}</span>
+        <span class="user_post">{{user_post}}</span>
+        {{#each reply}}
+        <div class="reply">
+            <img src={{user_image}} alt="{{user_text}}" class="reply_user_image"/>
+            <span class="reply_user_name">{{user_name}}</span>
+            <span class="reply_user_post">{{user_post}}</span>
+        </div>
+        {{/each}}
+        <input placeholder="Post to comment" onclick="addComment()" data-box-post-id={{post_id}}/>
+        {{/each}}
 </script>
 <script id="user-template" type="text/x-handlebars-template">
     <img src={{user_image}} alt="{{user_text}}"/>

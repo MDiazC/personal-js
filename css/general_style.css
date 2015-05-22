@@ -1,7 +1,7 @@
 *{margin:0px;padding:0px;}
 
 body{
-    background-color:#473AFF;
+    background-color:#6051E6;
 }
 
 .clear{
@@ -64,25 +64,34 @@ body{
 /* Styles logged_user */
  #logged_user{
     width:200px;
-    height:100px;
-    background-color:red;
-
+    background-color:E1E1E1;
     display:inline-block;
     vertical-align: top;
     margin-top:30px;
     margin-left: 15%;
     margin-right: 4%;
     border-radius: 10px;
+    padding-bottom: 20px;
+}
+
+#logged_user img {
+    margin-top: 10%;
+    margin-left: 6%;
+    vertical-align: middle;
+}
+
+#logged_user #logged_user_name {
+    margin-left: 6%;
 }
 /* Styles timeline */
  #timeline{
     width:600px;
-    height:400px;
-    background-color:green;
+    background-color:E1E1E1;
 
     display:inline-block;
     margin-top:30px;
     border-radius: 10px;
+    padding:20px 10px 20px 10px;
     
 }
 /* Styles update */
