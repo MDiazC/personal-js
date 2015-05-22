@@ -145,3 +145,29 @@ body{
     background-color: rgba(0,0,0,0.4);
     display:none;
 } 
+
+#update #new_post {
+    height: 250px;
+    margin-left: 35%;
+    margin-top: 12%;
+    width: 400px;
+    background-color:E1E1E1;
+    border-radius:6px;
+}
+
+#update #new_post #post_title{
+    padding-top: 20px;
+}
+
+#update #new_post #post_text{
+    display: block;
+    height: 100px;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    margin-top: 5%;
+    width: 200px;
+}
+
+#update #new_post button{
+    margin-left:40%;
+}

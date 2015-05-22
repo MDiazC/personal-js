@@ -26,8 +26,12 @@
     <div id="timeline"></div>
 
 <div id="update" onclick="$(this).hide()">
-    <input id="new_post" />
-    <h1 style="display:none">Something went wrong, please reload</h1>
+    <div id="new_post" onclick="event.stopPropagation()" >
+        <h2 align="center" id="post_title">Update your status</h2>
+        <textarea id="post_text" cols="25" rows="10" placeholder="Update your status here.."></textarea>
+        <button onclick="updateStatus(event)">Submit</button>
+    </div>
+    <h1 style="display:none;color:white">Something went wrong, please reload</h1>
 </div>
 <script>
 

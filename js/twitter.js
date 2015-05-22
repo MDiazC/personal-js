@@ -15,39 +15,52 @@ function showErrorMessage(){
 
 }
 
+function updateStatus(event){
+    var jElem = $(event.target).parent().find('#post_text');    
+    var post = {};
+    post.content= jElem.val();
+    post.data="";
+    post.userId=loggedUserId;
+    post.comments=[];
+
+    var id=0;
+    for(var pos in postsData){
+        id=pos;
+    }
+    id++;
+    post.postId= id;
+    postsData[id]=post;
+    loadPosts();
+    jElem.val('');
+    jElem.closest('#update').hide();
+}
+
 function addComment(evt){
 
     if(evt.charCode === 13 || evt.keyCode === 13){
+        var jElem = $(evt.target);
+        var post = {};
+        var postId=jElem.attr('data-box-post-id')
+        post.postId= postId;
+        post.content= jElem.val();
+        post.data="";
+        post.userId=loggedUserId;
 
-            var jElem = $(evt.target);
-            var post = {};
-            var postId=jElem.attr('data-box-post-id')
-            post.postId= postId;
-            post.content= jElem.val();
-            post.data="";
-            post.userId=loggedUserId;
+        var id=0;
+        for(var pos in postsData[postId].comments){
+            id=postsData[postId].comments[pos].id;
+        }
+        if(id == 0)
+            id=10;
+        else
+            id++;
 
-            var id=0;
-            for(var pos in postsData[postId].comments){
-                id=postsData[postId].comments[pos].id;
-            }
-            if(id == 0)
-                id=10;
-            else
-                id++;
-
-            post.id=id;
-            postsData[postId].comments.push(post);
-            $('#timeline').empty();
-            
-            loadPosts();
-console.log("true "+ postId);
-
+        post.id=id;
+        postsData[postId].comments.push(post);
+        $('#timeline').empty();
+        
+        loadPosts();
     }
-else{
-console.log("false");
-}
-
 }
 
 function loadUserInfo(){
